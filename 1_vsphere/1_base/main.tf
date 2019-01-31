@@ -1,6 +1,6 @@
 module "base" {
   source = "ptfe.this-demo.rocks/PNC/base/vsphere"
-  version = "1.0.6"
+  version = "1.0.7"
     prefix = "AAR"
     dc = "PacketDatacenter"
     cluster = "MainCluster"
