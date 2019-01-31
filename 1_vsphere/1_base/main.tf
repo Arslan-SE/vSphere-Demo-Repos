@@ -1,5 +1,6 @@
 module "base" {
-  source = "./modules/vsphere/terraform-vsphere-base"
+  source = "ptfe.this-demo.rocks/PNC/base/vsphere"
+  version = "1.0.1"
     prefix = "AAR"
     dc = "PacketDatacenter"
     cluster = "MainCluster"
