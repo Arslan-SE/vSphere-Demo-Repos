@@ -33,10 +33,10 @@ os_disk_size_gb = "${var.os_disk_size_gb}"
 
 // Data Disk 1
 data_disk_size_gb = "${var.data_disk_size_gb}"
-label = "${var.label}"
+//label = "${var.label}"
 
 // Tags
 //tagCategory = "Customer"
-//tag = "HashiCorp
+//tag = "HashiCorp"
 
 }
