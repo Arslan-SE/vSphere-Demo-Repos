@@ -1,7 +1,7 @@
 # SETUP
 module "compute" {
   source  = "ptfe.this-demo.rocks/PNC/compute/vsphere"
-  version = "1.0.5"
+  version = "1.0.6"
 prefix = "${var.prefix}"
 
 // VM Details
@@ -24,9 +24,9 @@ datastore = "${var.datastore}"
 // Network
 vnet = "${var.vnet}"
 ipv4submask = "${var.ipv4submask}"
-ipaddress = "${var.ipaddress}"
+ipaddress = ["${var.ipaddress}"]
 vmgateway = "${var.vmgateway}"
-vmdns = "${var.vmdns}"
+vmdns = ["${var.vmdns}"]
 
 // OS Disk
 os_disk_size_gb = "${var.os_disk_size_gb}"
