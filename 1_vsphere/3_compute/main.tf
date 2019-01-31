@@ -2,38 +2,38 @@
 module "compute" {
   source  = "ptfe.this-demo.rocks/PNC/compute/vsphere"
   version = "1.0.1"
-prefix = "SE-"
+prefix = "${var.prefix}"
 
 // VM Details
-vmname_prefix = "Arslan-"
-vmname = "Test"
-vmdomain = "vsphere.local"
-cpu_number = "2"
-ram_size = "2048"
+vmname_prefix = "${var.vmname_prefix}"
+vmname = "${var.vmname}"
+vmdomain = "${var.vmdomain}"
+cpu_number = "${var.cpu_number}"
+ram_size = "${var.ram_size}"
 
 // Template
-vmtemplate = "UbuntuTemplate"
+vmtemplate = "${var.vmtemplate}"
 
 // Destination
-dc = "PacketDatacenter"
-cluster = "MainCluster"
-vmfolder = "Arslan"
-datastore = "datastore1"
+dc = "${var.dc}"
+cluster = "${var.cluster}"
+vmfolder = "${var.vmfolder}"
+datastore = "${var.datastore}"
 // ds_cluster = "DatastoreCluster"
 
 // Network
-vnet = "VM Network"
-ipv4submask = "24"
-ipaddress = ["10.100.0.207"] 
-vmgateway = "10.100.0.1"
-vmdns = ["8.8.8.8","1.1.1.1"]
+vnet = "${var.vnet}"
+ipv4submask = "${var.ipv4submask}"
+ipaddress = "${var.ipaddress}"
+vmgateway = "${var.vmgateway}"
+vmdns = "${var.vmdns}"
 
 // OS Disk
-os_disk_size_gb = "16"
+os_disk_size_gb = "${var.os_disk_size_gb}"
 
 // Data Disk 1
-data_disk_size_gb = "16"
-label = "disk1"
+data_disk_size_gb = "${var.data_disk_size_gb}"
+label = "${var.label}"
 
 // Tags
 //tagCategory = "Customer"
