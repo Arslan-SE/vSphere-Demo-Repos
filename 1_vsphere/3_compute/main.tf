@@ -24,9 +24,9 @@ datastore = "${var.datastore}"
 // Network
 vnet = "${var.vnet}"
 ipv4submask = "${var.ipv4submask}"
-ipaddress = ["${var.ipaddress}"]
+ipaddress = "${var.ipaddress}"
 vmgateway = "${var.vmgateway}"
-vmdns = ["${var.vmdns}"]
+vmdns = "${var.vmdns}"
 
 // OS Disk
 os_disk_size_gb = "${var.os_disk_size_gb}"
