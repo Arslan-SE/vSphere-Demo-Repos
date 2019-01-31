@@ -1,3 +1,5 @@
+variable "prefix" { }
+
 module "base" {
   source = "ptfe.this-demo.rocks/PNC/base/vsphere"
   version = "1.0.7"
