@@ -1,7 +1,7 @@
 # SETUP
 module "compute" {
   source  = "ptfe.this-demo.rocks/PNC/compute/vsphere"
-  version = "1.0.3"
+  version = "1.0.5"
 prefix = "${var.prefix}"
 
 // VM Details
