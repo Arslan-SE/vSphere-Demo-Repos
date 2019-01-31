@@ -1,4 +1,4 @@
-module "test" {
+module "base" {
   source = "/../modules/vsphere/terraform-vsphere-base"
     prefix = "AAR"
     dc = "PacketDatacenter"
