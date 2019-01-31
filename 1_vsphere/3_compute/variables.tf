@@ -20,10 +20,6 @@ variable "vmtemplate" {
   description = "Name of the template available in the vSphere"
 }
 
-// Attribute Name 
-variable "attribute" {
-  description = "The attribute Name"
-}
 
 #### NETWORKING ####
 
@@ -94,38 +90,3 @@ variable "vmdomain" {
   description = "default VM domain for linux guest customization or Windows when join_windomain is selected"
   default     = "vsphere.local"
 }
-
-/*
-#### WINDOWS ####
-
-  variable "is_windows_image" {
-    description = "Boolean flag to notify when the custom image is windows based."
-    default     = "false"
-  }
-    variable "winadminpass" {
-        description = "The administrator password for this virtual machine.(Required) when using join_windomain option"
-        default = "Str0ngP@ssw0rd!"
-    }   
-    variable "productkey" {
-      description = "Product key to be used during windows customization. Defualt set to win2k16 KMS"
-      default = "WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY"
-    }
-    // Join Domain. Enter domainuser and domainpass.
-    variable "join_windomain" {
-      description = "Boolean flag to set when want join windows server to AD"
-      default = "false"
-    }
-        variable "domainuser" {
-          description = "Domain admin user to join the server to AD.(Required) when using join_windomain option"
-          default = "Domain User"
-        }
-        variable "domainpass" {
-          description = "Doamin User pssword to join the server to AD.(Required) when using join_windomain option"
-          default = "Str0ngP@ssw0rd!"
-        }
-        variable "orgname" {
-          description = "Organization name for when joining windows server to AD"
-          default = "Terraform"
-        }
-*/
-
