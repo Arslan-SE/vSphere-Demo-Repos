@@ -1,56 +1,42 @@
-resource "vsphere_virtual_machine" "vm" {
-  count = "${var.instances}"
-  name  = "${var.vmname_prefix}${var.vmname}${count.index+1}"
+# SETUP
+module "compute" {
+  source  = "ptfe.this-demo.rocks/PNC/compute/vsphere"
+  version = "1.0.1"
+prefix = "SE-"
 
-  //name             = "${var.vmname}"
-  resource_pool_id = "${data.vsphere_compute_cluster.compute_cluster.resource_pool_id}"
-  folder           = "${vsphere_folder.folder.path}"
+// VM Details
+vmname_prefix = "Arslan-"
+vmname = "Test"
+vmdomain = "vsphere.local"
+cpu_number = "2"
+ram_size = "2048"
 
-  // datastore_cluster_id = "${data.vsphere_datastore_cluster.datastore_cluster.id}"
+// Template
+vmtemplate = "UbuntuTemplate"
 
-  num_cpus = "${var.cpu_number}"
-  memory   = "${var.ram_size}"
-  //guest_id  = "${data.vsphere_virtual_machine.template.guest_id}"
-  guest_id  = "ubuntu64Guest"
-  scsi_type = "${data.vsphere_virtual_machine.template.scsi_type}"
-  network_interface {
-    network_id = "${data.vsphere_network.network.id}"
+// Destination
+dc = "PacketDatacenter"
+cluster = "MainCluster"
+vmfolder = "Arslan"
+datastore = "datastore1"
+// ds_cluster = "DatastoreCluster"
 
-    //adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
-  }
+// Network
+vnet = "VM Network"
+ipv4submask = "24"
+ipaddress = ["10.100.0.207"] 
+vmgateway = "10.100.0.1"
+vmdns = ["8.8.8.8","1.1.1.1"]
 
-  /*
-  disk {
-    label            = "${var.vmname}"
-    unit_number      = 
-    size             = "${var.os_disk_size_gb}"
-    eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.0.eagerly_scrub}"
-    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
-  }
-  */
+// OS Disk
+os_disk_size_gb = "16"
 
-  disk {
-    label            = "disk1"
-    size             = "${var.data_disk_size_gb}"
-    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
-  }
-  clone {
-    template_uuid = "${data.vsphere_virtual_machine.template.id}"
+// Data Disk 1
+data_disk_size_gb = "16"
+label = "disk1"
 
-    customize {
-      linux_options {
-        host_name = "${var.vmname}"
-        domain    = "${var.vmdomain}"
-      }
+// Tags
+//tagCategory = "Customer"
+//tag = "HashiCorp
 
-      network_interface {
-        ipv4_address = "${element(var.ipaddress, count.index)}"
-        ipv4_netmask = "${var.ipv4submask}"
-      }
-
-      dns_server_list = "${var.vmdns}"
-      ipv4_gateway    = "${var.vmgateway}"
-    }
-  }
-  custom_attributes = "${map(vsphere_custom_attribute.attribute.id, "${var.attributeValue}")}"
 }
