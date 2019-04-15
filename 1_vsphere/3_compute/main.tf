@@ -2,7 +2,7 @@
 #test
 # SETUP
 module "compute" {
-  source  = "ptfe.this-demo.rocks/PNC/compute/vsphere"
+  source  = "ptfe.this-demo.rocks/VMware-Demo/compute/vsphere"
   version = "1.0.6"
 prefix = "${var.prefix}"
 
