@@ -7,6 +7,7 @@ module "compute" {
 prefix = "${var.prefix}"
 
 // VM Details
+instances = "${var.instances}"
 vmname_prefix = "${var.vmname_prefix}"
 vmname = "${var.vmname}"
 vmdomain = "${var.vmdomain}"
