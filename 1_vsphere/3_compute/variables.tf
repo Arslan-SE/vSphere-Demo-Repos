@@ -49,7 +49,7 @@ variable "vmdns" {
 // Number of VMs
 variable "instances" {
   description = "number of instances you want deploy from the template"
-  default     = 1
+  #default     = 1
 }
 
 // VM Name
